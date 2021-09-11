@@ -1,0 +1,28 @@
+<div class="d-flex">
+
+
+
+    <mat-card class="mb-5 position-relative mr-3 py-3 px-2 " style="width: 17rem; height: 35rem; max-width: 17rem;">
+        <p class="d-none">{{movie.id}}</p>
+        <img mat-card-image class="mat-card-img" src="{{movie.poster}}" alt="...">
+        <div class="card-body p-0 d-flex justify-content-center align-items-center flex-column">
+            <mat-card-header>
+                <mat-card-title class="">{{movie.title}}
+                </mat-card-title>
+            </mat-card-header>
+            <div class="d-flex pb-2 align-items-center">
+                <ngx-stars [readonly]="false" [size]="1" [initialStars]=movie.rating [maxStars]="5">
+                </ngx-stars>
+                <span class="rate"> {{ movie.rating }}</span>
+
+            </div>
+            <a routerLink="{{'/movie/'+this.movie.title}}" class="more-cta" mat-raised-button color="accent"
+                (click)="onClick(movie)">More
+                Info</a>
+        </div>
+
+
+    </mat-card>
+
+
+</div>

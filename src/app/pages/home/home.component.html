@@ -1,0 +1,48 @@
+<div class="container">
+    <!-- <div *ngFor="let Movie of movies; let i = index">
+
+    </div> -->
+    <div class="row">
+        <div class="sort-filter align-items-center col-xl-6 py-4 d-flex  justify-content-around">
+            <h4 class="m-auto">Sort By:</h4>
+            <a class="mx-auto " mat-raised-button color="accent" (click)="highest()">Highest Rating </a>
+            <a class="mx-auto" mat-raised-button color="accent" (click)="lowest()">Lowest Rating </a>
+            <a class="mx-auto" mat-raised-button color="accent" (click)="newDate()">New to Old</a>
+            <a class="mx-auto" mat-raised-button color="accent" (click)="oldDate()">Old to New</a>
+        </div>
+        <div class="col-xl-6 py-4 d-flex justify-content-around">
+            <mat-form-field class="w-100" color="accent">
+                <mat-label>Search Movie</mat-label>
+                <input matInput placeholder="Movie Name" [(ngModel)]="query" type="text" class="w-100"
+                    (keyup)="searchClick($event)">
+                <button *ngIf="query" matSuffix mat-icon-button aria-label="Clear" (click)="query=''"
+                    (click)="searchReset()">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </mat-form-field>
+        </div>
+
+
+    </div>
+    <div class="d-flex align-items-center py-4 flex-wrap">
+        <h4 class="m-auto">Genres :</h4>
+        <a class="mx-auto" mat-raised-button color="primary" (click)="genres('Action')">Action </a>
+        <a class="mx-auto" mat-raised-button color="primary" (click)="genres('Adventure')">Adventure </a>
+        <a class="mx-auto" mat-raised-button color="primary" (click)="genres('Science Fiction')">Sci - Fi </a>
+        <a class="mx-auto" mat-raised-button color="primary" (click)="genres('Horror')">Horror</a>
+        <a class="mx-auto" mat-raised-button color="primary" (click)="genres('Comedy')">Comedy </a>
+        <a class="mx-auto" mat-raised-button color="primary" (click)="genres('Drama')">Drama </a>
+        <a class="mx-auto" mat-raised-button color="primary" (click)="genres('Animation')">Animation </a>
+        <a class="mx-auto" mat-raised-button color="primary" (click)="genres('Family')">Family </a>
+        <a class="mx-auto" mat-raised-button color="primary" (click)="genres('Romance')">Romance </a>
+        <a class="mx-auto" mat-raised-button color="primary" (click)="genres('Thriller')">Thriller </a>
+    </div>
+    <div class="d-flex flex-wrap justify-content-around">
+
+        <div *ngFor="let Movie of movies; let i=index">
+            <app-moviescard [movie]="Movie" [i]="i" (indexGet)="indexGet($event)"></app-moviescard>
+        </div>
+
+    </div>
+
+</div>

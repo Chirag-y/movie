@@ -1,0 +1,88 @@
+<div class="container">
+    <h1 class="display-1 text-center py-4">{{movieShow[0].title}}</h1>
+    <div class="row">
+        <div class="col-sm-4">
+            <img src="{{movieShow[0].poster}}" alt="{{movieShow[0].title}}" class="movie-Img">
+        </div>
+        <div class="col-sm-8">
+            <div class="row">
+                <div class="col-3">
+
+                    <h3 class="category-title mb-3">Title</h3>
+                </div>
+                <div class="col-8">
+                    <h3 class="category-info mb-3">{{movieShow[0].title}}</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+
+                    <h3 class="category-title mb-3">Rating</h3>
+                </div>
+                <div class="col-8">
+                    <div class="d-flex mb-3 align-items-center">
+                        <ngx-stars [readonly]="false" [size]="2" [initialStars]=movieShow[0].rating [maxStars]="5"
+                            (ratingOutput)="onRatingSet($event)">
+                        </ngx-stars>
+                        <span style="font-weight: bold; font-size: 20px">Rating is {{ ratingDisplay }} out of 5</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+
+                    <h3 class="category-title mb-3">Release Date</h3>
+                </div>
+                <div class="col-8">
+                    <h3 class="category-info mb-3">{{movieShow[0].release_date *1000 | date:'dd/MM/yyyy'}}</h3>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-3">
+
+                    <h3 class="category-title mb-3">Genre</h3>
+                </div>
+                <div class="col-8">
+                    <h3 class="category-info mb-3">{{movieShow[0].genres}}</h3>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-3">
+
+                    <h3 class="category-title mb-3">Overview</h3>
+                </div>
+                <div class="col-8">
+                    <h3 class="category-info mb-3">{{movieShow[0].overview}}</h3>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-3">
+
+                    <h3 class="category-title mb-3">Cast</h3>
+                </div>
+                <div class="col-8 d-flex flex-wrap">
+                    <!-- <h3 class="category-info mb-3">{{movieShow[0].cast}}</h3> -->
+                    <div class="category-info d-flex " (click)="people(cast)" routerLink="../../people"
+                        *ngFor="let cast of movieCast; let i = index">
+                        <a class=" moviecast d-flex flex-wrap">{{movieCast[i]}}</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="display-3 text-center py-5 related">Related Movies</div>
+
+    <div class="d-flex  flex-wrap justify-content-start">
+
+        <div class="me-2" *ngFor="let Movie of moviesGenres; let i=index">
+            <app-moviescard [movie]="Movie" [i]="i" (indexGet)="indexGet($event)"></app-moviescard>
+        </div>
+
+    </div>
+
+</div>

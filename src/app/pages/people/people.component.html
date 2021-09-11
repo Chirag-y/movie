@@ -1,0 +1,10 @@
+<div class="container d-flex justify-content-around flex-column">
+    <h1 class="display-3 fw-bold justify-content-center d-flex text-center text-success">{{person}}</h1>
+
+    <h6 class="display-5 fw-bold mx-auto"> Moives of {{person}}</h6>
+    <div class="d-flex  flex-wrap justify-content-start">
+        <div class="me-2" *ngFor="let Movie of castMovies; let i=index">
+            <app-moviescard [movie]="Movie" [i]="i" (inde)="indexGet($event)"></app-moviescard>
+        </div>
+    </div>
+</div>
